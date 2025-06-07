@@ -90,8 +90,8 @@ We analyze smart device usage data from FitBit to help Bellabeat, a wellness-foc
 🎓 BBA Graduate | 📊 Aspiring Data Analyst  
 📌 Tools: SQL | Excel | Tableau | R  
 🌐 GitHub: [> click here](https://github.com/kishore-00007)  
-📫 Email: [> kishore00007s@gmail.com](mailto:kishore00007s@gmail.com)  
-🔗 LinkedIn: [> bit.ly/kishore-linkedin](https://bit.ly/kishore-linkedin)
+📫 Email: [> mail here](mailto:kishore00007s@gmail.com)  
+🔗 LinkedIn: [> visit here](https://bit.ly/kishore-linkedin)
 ---
 
 ## 📂 File Structure
