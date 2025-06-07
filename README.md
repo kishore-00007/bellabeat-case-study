@@ -89,9 +89,9 @@ We analyze smart device usage data from FitBit to help Bellabeat, a wellness-foc
 **Kishore Suresh**  
 🎓 BBA Graduate | 📊 Aspiring Data Analyst  
 📌 Tools: SQL | Excel | Tableau | R  
-🌐 Github portfolio: https://github.com/kishore-00007  
-📫 Email: kishore00007s@gmail.com 
-
+🌐 GitHub: [> click here](https://github.com/kishore-00007)  
+📫 Email: [> kishore00007s@gmail.com](mailto:kishore00007s@gmail.com)  
+🔗 LinkedIn: [> bit.ly/kishore-linkedin](https://bit.ly/kishore-linkedin)
 ---
 
 ## 📂 File Structure
