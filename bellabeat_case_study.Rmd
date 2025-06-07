@@ -1,0 +1,99 @@
+---
+title: "Bellabeat Case Study"
+author: "kishore"
+date: "2025-06-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1. Business Task
+
+Bellabeat, a wellness company for women, wants to gain insights from smart device (Fitbit) data to improve its marketing strategy.  
+As a data analyst, I will identify trends in user activity, sleep, and calories — and suggest recommendations for one of their products (e.g., Leaf or Time).
+
+*Goal:*  
+Turn real-world behavior patterns into data-driven marketing strategies.
+
+---
+
+# 2. Data Preparation
+
+{r load-and-clean}
+library(tidyverse)
+library(lubridate)
+library(janitor)
+
+# Load data
+daily_activity <- read_csv("data/dailyActivity_merged.csv")
+sleep_day <- read_csv("data/sleepDay_merged.csv")
+weight_log <- read_csv("data/weightLogInfo_merged.csv")
+
+# Clean column names
+daily_activity <- clean_names(daily_activity)
+sleep_day <- clean_names(sleep_day)
+weight_log <- clean_names(weight_log)
+
+# Fix date formats
+daily_activity <- daily_activity %>%
+  mutate(activity_date = mdy(activity_date))
+
+sleep_day <- sleep_day %>%
+  mutate(sleep_day = mdy_hms(sleep_day))
+
+# Remove duplicates
+daily_activity <- daily_activity %>% distinct()
+sleep_day <- sleep_day %>% distinct()
+weight_log <- weight_log %>% distinct()
+
+# 3. Exploratory Data Analysis
+
+## Steps Summary
+{r steps-summary}
+daily_activity %>%
+  summarise(mean = mean(total_steps), median = median(total_steps))
+
+
+## Calories vs Active Minutes
+{r calories-vs-active}
+ggplot(daily_activity, aes(x = very_active_minutes, y = calories)) +
+  geom_point(color = "purple") +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Very Active Minutes vs Calories Burned",
+       x = "Very Active Minutes", y = "Calories Burned")
+
+
+## Sleep Duration
+{r sleep-summary}
+sleep_day %>%
+  summarise(avg_sleep = mean(total_minutes_asleep) / 60,
+            median_sleep = median(total_minutes_asleep) / 60)
+
+
+## Sleep Histogram
+{r sleep-histogram}
+ggplot(sleep_day, aes(x = total_minutes_asleep / 60)) +
+  geom_histogram(fill = "darkgreen", bins = 20) +
+  labs(title = "Distribution of Sleep Duration", x = "Hours Asleep", y = "Count of Days")
+
+
+# 4. Key Insights
+
+- Users who are more active burn more calories — strong positive correlation.
+- Average sleep is 6.99 hours; most users sleep less than 7 hours.
+- Few users consistently meet 10,000 steps/day. Many are moderately active.
+
+# 5. Recommendations for Bellabeat
+
+1. Market the *Leaf* or *Time* to active users who want to monitor calories.
+2. Emphasize *sleep tracking features* to help users improve rest habits.
+3. Promote *“7k Steps a Day” app challenges* to build consistent habits.
+4. Use *push notifications + Instagram ads* for engagement.
+
+---
+
+# 6. Final Thoughts
+
+Bellabeat can use these insights to drive more engagement by aligning its app and products with real user behavior seen in the Fitbit dataset.
